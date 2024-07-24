@@ -1,5 +1,5 @@
 # Roman Numeral Converter with TDD
-Steps
+
 Test-Driven Development (TDD) is a software development process that involves writing tests before writing the corresponding code. The process typically follows these steps:
 
 1. Red Phase: Write a Failing Test
@@ -13,6 +13,8 @@ Run the test: Ensure that the test passes with the new code.
 5. Refactor Phase: Improve the Code
 Refactor the code: Clean up the code while keeping the functionality the same. Improve the design, remove duplication, and ensure code quality.
 Run all tests: Ensure that all tests still pass after the refactoring.
+
+**Steps **
 
 1. create class with unit test
 //Arrange //Act //Assert
@@ -58,15 +60,16 @@ REFACTOR
 
 I. create another project
 ** make public the class you created
+
 II. generate Dictionary "RomanMap"
         private static readonly Dictionary<char, int> 
 RomanMap = new()
 {{ 'I', 1 },{ 'V', 5 },{ 'X', 10 },
 { 'L', 50 },{ 'C', 100 },{ 'D', 500 },{ 'M', 1000 }};
 
-3. for loop with map
+for loop with map
    
-		int number = 0;
+	    int number = 0;
             for (int i = 0; i < roman.Length; i++)
             {
                     number += RomanMap[roman[i]];
@@ -86,7 +89,7 @@ III. Unit Test refactor
         
         }
 
-6. convert_IV_To_4 // for loop from 1
+6. Convert_IV_To_4 // for loop from 1
 
           int prevValue = Roman[roman[0]];
             for (int i = 1; i < roman.Length; i++)
@@ -108,10 +111,10 @@ III. Unit Test refactor
             return number;
             }
 
-7. convert_VI_To_6
+7. Convert_VI_To_6
  Should Work
 
-8. convert_Lower_case_roman - before upper need to check null or empty
+8. Convert_Lower_case_roman - before upper need to check null or empty
    
 	 	 roman = roman.ToUpper();
    
