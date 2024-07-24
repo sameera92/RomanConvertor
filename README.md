@@ -55,6 +55,7 @@ Assert.Equal(2, _romanToDecimal.RomanToInteger(roman));
 5. Convert_III_To_3 and V
 
 REFACTOR
+
 I. create another project
 ** make public the class you created
 II. generate Dictionary "RomanMap"
