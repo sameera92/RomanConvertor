@@ -54,18 +54,25 @@ Assert.Equal(2, _romanToDecimal.RomanToInteger(roman));
 
 5. Convert_III_To_3 and V
 
-///////////////////
 REFACTOR
-1. create another project
+I. create another project
 ** make public the class you created
-2. generate Dictionary "RomanMap"
+II. generate Dictionary "RomanMap"
         private static readonly Dictionary<char, int> 
 RomanMap = new()
 {{ 'I', 1 },{ 'V', 5 },{ 'X', 10 },
 { 'L', 50 },{ 'C', 100 },{ 'D', 500 },{ 'M', 1000 }};
+
 3. for loop with map
-//////////
-Unit Test refactor
+   
+		int number = 0;
+            for (int i = 0; i < roman.Length; i++)
+            {
+                    number += RomanMap[roman[i]];
+            }
+            return number;
+
+III. Unit Test refactor
 
         [Theory]
         [InlineData("I", 1)]
@@ -77,7 +84,6 @@ Unit Test refactor
         Assert.Equal(expected,_romanToDecimal.ConvertRomanToInt(roman));
         
         }
-////////////////////
 
 6. convert_IV_To_4 // for loop from 1
 
@@ -105,16 +111,17 @@ Unit Test refactor
  Should Work
 
 8. convert_Lower_case_roman - before upper need to check null or empty
-	  roman = roman.ToUpper();
-
+   
+	 	 roman = roman.ToUpper();
+   
 9. Validations - Empty String or Null
 Run Unit Test with Empty Value
-
 UT->  Assert.Throws<ArgumentException>(() => _romanToDecimal.RomanToInteger(roman));
 
-	if (string.IsNullOrWhiteSpace(input)){
-      throw new ArgumentException($"{nameof(input)} is null or empty");
-   }
+	    if (string.IsNullOrWhiteSpace(input))
+            {
+                throw new ArgumentException($"{nameof(input)} is null or empty");
+            }
 
 10. Should_Throw_ArgumentException_When_Input_Not_RomanNumeral
     
@@ -152,18 +159,18 @@ UT->  Assert.Throws<ArgumentException>(() => _romanToDecimal.RomanToInteger(roma
             {
                 if (!(
                     (prevValue == RomanMap['I'] && (currentValue == RomanMap['V'] 
-|| currentValue == RomanMap['X'])) ||
+            || currentValue == RomanMap['X'])) ||
                     (prevValue == RomanMap['X'] && (currentValue == RomanMap['L'] 
-|| currentValue == RomanMap['C'])) ||
+            || currentValue == RomanMap['C'])) ||
                     (prevValue == RomanMap['C'] && (currentValue == RomanMap['D'] 
-|| currentValue == RomanMap['M']))
+            || currentValue == RomanMap['M']))
                 ))
                 {
                     throw new ArgumentException("Invalid subtractive combination.");
                 }
             }
 
-// Code should be like this
+// Code should be like this so far
 
         public int RomanToInt(string roman)
         {
